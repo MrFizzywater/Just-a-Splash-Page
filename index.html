@@ -2,342 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Scene Chunks – Structure Your Story, One Beat at a Time</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta
-      name="description"
-      content="Scene Chunks is a desktop app for writers and filmmakers who think in beats, blocks, and visual chunks – not 120 pages of scrolling doom."
-    />
+    <title>Media Artist // Final Cut In Progress</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
-                    },
-                    colors: {
-                        'zinc-950': '#0a0a0a',
-                        'zinc-925': '#111113', 
-                        'purple-accent': '#a855f7', // Punchy purple
-                        'orange-accent': '#ff7a3c', // Used for accents in mockup/buttons
-                        'text-muted': '#a4a7b7',
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+    <!-- Use Inter font for a modern look -->
     <style>
-        /* Custom styles to mimic the application's visual elements */
-        .app-mockup-card {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #0a0a0a 100%);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
         }
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #f97316, #ef4444); /* Orange/Red gradient */
+        /* Custom pulsing animation for the progress bar */
+        @keyframes pulse-bar {
+            0%, 100% { width: 0%; opacity: 0.5; }
+            50% { width: 100%; opacity: 1; }
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #ff7a3c, #ff3c8a);
-            box-shadow: 0 5px 20px rgba(255, 122, 60, 0.4);
-        }
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-        .cta-row a {
-            transition: all 0.2s;
-        }
-        .feature-card:hover {
-            border-color: #ff7a3c;
-            transform: translateY(-2px);
-            transition: all 0.2s ease-in-out;
+        .animate-pulse-bar {
+            animation: pulse-bar 2s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="min-h-screen bg-zinc-950 text-zinc-100 font-sans antialiased">
+<body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-4">
 
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-md border-b border-white/10">
-        <nav class="max-w-7xl mx-auto px-6 lg:px-4 h-16 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2">
-                <div class="bg-orange-accent p-1 rounded-md shadow-lg shadow-orange-accent/30">
-                    <!-- Icon: Scissors -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-950"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" x2="8.12" y1="12" y2="12"/><line x1="14.47" x2="20" y1="89" y2="12"/><line x1="14.47" x2="20" y1="15.82" y2="12"/></svg>
-                </div>
-                <div class="flex flex-col gap-0.5">
-                    <span class="font-bold text-lg tracking-tight text-white uppercase">Scene Chunks</span>
-                    <span class="text-xs text-text-muted hidden sm:block">Write in beats. Not misery.</span>
-                </div>
-            </a>
-            <div class="flex items-center gap-4">
-                <a href="#features" class="text-text-muted hover:text-white transition-colors text-sm font-medium hidden md:block">Features</a>
-                <a href="#download" class="text-text-muted hover:text-white transition-colors text-sm font-medium hidden md:block">Download</a>
-                <a href="https://github.com/MrFizzywater/scene-chunks" target="_blank" rel="noreferrer" class="flex items-center gap-2 bg-orange-accent/10 hover:bg-orange-accent/20 text-orange-accent px-3 py-1 rounded-full transition-all text-sm font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.44-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5-.73 1.06-1.18 2.25-1 3.5 0 3.5 3 5.5 6 5.5-.39.49-.68 1.02-.85 1.58-.17.58-.22 1.2-.21 1.9v4"/><path d="M9 18c-4.51 2-5-4-5-4"/></svg>
-                    <span>GitHub</span>
-                </a>
+    <div class="max-w-4xl w-full bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-700/50">
+        <!-- Header & Core Message -->
+        <header class="text-center mb-10">
+            <div class="text-6xl md:text-8xl mb-4 text-yellow-400">
+                🎬
             </div>
-        </nav>
-    </header>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-2">
+                FINAL CUT IMMINENT
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 font-light">
+                This project is currently rendering.
+            </p>
+        </header>
 
-    <!-- HERO SECTION -->
-    <main class="pt-24 pb-16 px-6">
-        <section class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            <!-- Hero Text Content -->
-            <div class="lg:order-1 order-2">
-                <div class="mb-4">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-accent/20 bg-orange-accent/10 text-orange-accent text-xs font-medium">
-                        <span class="w-1.5 h-1.5 rounded-full bg-green-400 shadow-green-400 shadow-md"></span>
-                        Desktop app for writers & filmmakers
-                    </span>
-                </div>
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight leading-tight">
-                    Structure your story<br />
-                    <span class="text-gradient">one chunk at a time.</span>
-                </h1>
-                <p class="text-lg text-text-muted max-w-lg mb-8 leading-relaxed">
-                    <strong>Scene Chunks</strong> is a desktop app for people who hate staring
-                    at a 120-page brick of text. Break your script into small, visual chunks,
-                    line them up on a structure timeline, and see where your story actually
-                    lives.
-                </p>
-
-                <div class="flex flex-wrap gap-3 mb-3 cta-row">
-                    <a href="Scene-Chunks-Setup-1.0.0.exe" class="btn btn-primary text-zinc-950 font-semibold px-6 py-3 rounded-full flex items-center gap-2">
-                        ⬇ Windows Installer
-                    </a>
-                    <a href="Scene-Chunks-mac-1.0.0.dmg" class="btn btn-ghost border border-white/10 text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-white/5">
-                        ⬇ macOS App
-                    </a>
-                </div>
-                <div class="text-sm text-text-muted mb-4">
-                    <strong class="text-orange-accent">Suggested donation: $10</strong> – pay what feels fair, or just grab
-                    it and make something cool.
-                </div>
-
-                <div class="flex flex-wrap gap-4 text-xs text-text-muted pt-4 border-t border-white/5">
-                    <span class="flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> No subscription. Local files.
-                    </span>
-                    <span class="flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Works great for features, pilots, and shorts.
-                    </span>
-                </div>
-            </div>
-
-            <!-- Application Mockup -->
-            <div class="lg:order-2 order-1 flex justify-center">
-                <div class="w-full max-w-md app-mockup-card rounded-xl border border-white/10 p-4">
-                    <div class="flex justify-between items-center mb-4 text-xs text-text-muted">
-                        <div class="flex gap-1.5">
-                            <span class="w-2.5 h-2.5 rounded-full bg-red-500/50"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></span>
-                            <span class="w-2.5 h-2.5 rounded-full bg-green-500/50"></span>
-                        </div>
-                        <div>Project: <strong class="text-white">Your_Next_Movie.scenechunks.json</strong></div>
-                    </div>
-                    
-                    <!-- Timeline Mockup -->
-                    <div class="bg-zinc-950 rounded-xl border border-white/10 p-3 mb-4">
-                        <div class="flex justify-between text-xs text-text-muted mb-2">
-                            <span>Structure Map</span>
-                            <span class="text-white">3-Act Feature</span>
-                        </div>
-                        <div class="relative h-2 bg-zinc-800 rounded-full overflow-hidden mb-1">
-                            <div class="h-full w-[70%] bg-orange-accent/80 absolute inset-0 rounded-full" style="background: linear-gradient(90deg, #ff7a3c, #ff3c8a);"></div>
-                        </div>
-                        <div class="flex justify-between text-[10px] text-text-muted opacity-80">
-                            <span>Setup</span>
-                            <span>Inciting Incident</span>
-                            <span>Midpoint</span>
-                            <span>All Is Lost</span>
-                            <span>Finale</span>
-                        </div>
-                    </div>
-
-                    <!-- Chunk List Mockup -->
-                    <div class="space-y-3">
-                        <div class="bg-zinc-800/50 border border-white/10 p-3 rounded-lg flex justify-between items-center">
-                            <div class="flex flex-col">
-                                <span class="text-sm font-semibold">INT. VIDEO STORE – NIGHT</span>
-                                <div class="flex gap-2 mt-1">
-                                    <span class="bg-orange-accent/20 text-orange-accent text-xs px-2 py-0.5 rounded-full">Inciting Incident</span>
-                                    <span class="text-text-muted text-xs px-2 py-0.5 rounded-full bg-zinc-900 border border-zinc-800">1.2 pages</span>
-                                </div>
-                            </div>
-                            <div class="w-3 h-3 rounded-full bg-green-400 shadow-md shadow-green-400/50"></div>
-                        </div>
-                         <div class="bg-zinc-800/50 border border-white/10 p-3 rounded-lg flex justify-between items-center">
-                            <div class="flex flex-col">
-                                <span class="text-sm font-semibold">EXT. PARKING LOT – LATER</span>
-                                <div class="flex gap-2 mt-1">
-                                    <span class="text-text-muted text-xs px-2 py-0.5 rounded-full bg-zinc-900 border border-zinc-800">Needs rewrite</span>
-                                    <span class="text-text-muted text-xs px-2 py-0.5 rounded-full bg-zinc-900 border border-zinc-800">Midpoint (Off-Target)</span>
-                                </div>
-                            </div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500 shadow-md shadow-yellow-500/50"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURES SECTION -->
-        <section id="features" class="max-w-7xl mx-auto pt-20">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-1">
-                    <h2 class="text-3xl font-bold text-white mb-4">Built for brains that think in chunks, not paragraphs</h2>
-                    <p class="text-base text-text-muted mb-8">
-                        Scene Chunks doesn’t try to be Final Draft or some bloated “all-in-one studio pipeline.” It’s a focused tool for the messy middle: the part where you’re trying to wrestle your ideas into a story that actually lands.
-                    </p>
-                    <aside class="bg-zinc-900 border border-zinc-800 p-4 rounded-xl space-y-3">
-                        <div class="text-white font-semibold text-base border-b border-zinc-800 pb-2">Perfect if you’re...</div>
-                        <ul class="text-sm text-text-muted list-disc pl-5 space-y-2">
-                            <li>A filmmaker who outlines visually before polishing pages.</li>
-                            <li>A writer who loves beat sheets but hates endless docs.</li>
-                            <li>DIY-ing your next feature, pilot, short, or YouTube series.</li>
-                            <li>Someone whose brain refuses to think in straight lines.</li>
-                        </ul>
-                        <p class="text-sm text-text-muted pt-2 border-t border-zinc-800">
-                            This is your <strong>structure lab</strong>, not your prison. It plays nicely with whatever you already use for final drafts – Fade In, Highland, Final Draft, etc.
-                        </p>
-                    </aside>
-                </div>
-                
-                <div class="lg:col-span-2">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Feature Card 1 -->
-                        <div class="feature-card bg-zinc-900 border border-zinc-800 p-6 rounded-xl">
-                            <h3 class="text-lg font-bold text-white mb-2">🧩 Chunk-based writing</h3>
-                            <p class="text-sm text-text-muted">
-                                Write scenes as small, modular “chunks” instead of one endless scroll. Reorder, duplicate, and experiment without breaking your script.
-                            </p>
-                        </div>
-                        <!-- Feature Card 2 -->
-                        <div class="feature-card bg-zinc-900 border border-zinc-800 p-6 rounded-xl">
-                            <h3 class="text-lg font-bold text-white mb-2">📊 Structure-aware timeline</h3>
-                            <p class="text-sm text-text-muted">
-                                Map your chunks onto a story structure template (3-act, pilot, whatever) and see where the important beats actually land.
-                            </p>
-                        </div>
-                        <!-- Feature Card 3 -->
-                        <div class="feature-card bg-zinc-900 border border-zinc-800 p-6 rounded-xl">
-                            <h3 class="text-lg font-bold text-white mb-2">👥 Characters, props & locations</h3>
-                            <p class="text-sm text-text-muted">
-                                Track who’s in the scene and what you need on screen. Great for both writing and planning small shoots.
-                            </p>
-                        </div>
-                        <!-- Feature Card 4 -->
-                        <div class="feature-card bg-zinc-900 border border-zinc-800 p-6 rounded-xl">
-                            <h3 class="text-lg font-bold text-white mb-2">💾 Local-first projects</h3>
-                            <p class="text-sm text-text-muted">
-                                Everything lives in simple `.scenechunks.json` files. Easy to back up, share, and version-control. No login, no cloud dependency.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DOWNLOAD / DONATION SECTION -->
-        <section id="download" class="max-w-7xl mx-auto pt-20">
-            <div class="download-section bg-zinc-900 border border-orange-accent/30 p-8 rounded-xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div>
-                    <h2 class="text-2xl font-bold text-white mb-2">Download Scene Chunks</h2>
-                    <p class="text-base text-text-muted mb-6">
-                        Desktop app for writers, filmmakers, and story-gremlins who want to see structure at a glance instead of vibe-checking page 67 and praying.
-                    </p>
-                    <div class="flex flex-wrap gap-3 mb-3">
-                        <a href="Scene-Chunks-Setup-1.0.0.exe" class="btn btn-primary text-zinc-950 font-semibold px-5 py-2.5 rounded-full flex items-center gap-2">
-                            ⬇ Windows Installer
-                        </a>
-                        <a href="Scene-Chunks-mac-1.0.0.dmg" class="btn btn-ghost border border-white/10 text-white px-5 py-2.5 rounded-full flex items-center gap-2 hover:bg-white/5">
-                            ⬇ macOS App
-                        </a>
-                    </div>
-                    <div class="text-xs text-text-muted">
-                        Windows 10+ & macOS (Apple Silicon / Intel). No extra dev tools required.
-                    </div>
-                </div>
-
-                <div class="donate-card bg-zinc-950/80 border border-dashed border-orange-accent/50 p-4 rounded-xl space-y-3">
-                    <p class="text-sm text-text-muted">
-                        Scene Chunks is an indie tool built by a filmmaker who got tired of fighting software instead of fixing his stories.
-                    </p>
-                    <p class="text-sm text-text-muted">
-                        If it helps you: <strong>please consider tossing a few bucks toward development</strong> – it directly supports future updates, bug fixes, new structure templates, and possibly too much coffee.
-                    </p>
-                    <a href="https://your-donation-link-here" class="btn btn-primary text-zinc-950 font-semibold text-sm px-4 py-2 rounded-full inline-flex items-center gap-2">
-                        Donate / Support Development
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ / INFO SECTION -->
-        <section class="max-w-7xl mx-auto pt-20 pb-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-                <div>
-                    <h2 class="text-xl font-bold text-white mb-4">Is it finished?</h2>
-                    <p class="text-text-muted mb-4">
-                        It’s “actively evolving indie software,” which is a nice way of saying: it works, it’s useful, and it’ll keep getting better as time and caffeine allow.
-                    </p>
-                    <p class="text-text-muted">
-                        You’re welcome to
-                        <a href="https://github.com/MrFizzywater/scene-chunks" target="_blank" rel="noreferrer" class="text-orange-accent hover:text-white"
-                          >peek at the code on GitHub</a
-                        >
-                        or suggest features, templates, and improvements.
-                    </p>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="faq-item">
-                        <h3 class="text-lg font-semibold text-white mb-1">Do you track my data?</h3>
-                        <p class="text-text-muted">
-                            No. Projects are just local JSON files. You own them. Back them up how you like. No login, no telemetry.
-                        </p>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="text-lg font-semibold text-white mb-1">Can I use it for non-film stuff?</h3>
-                        <p class="text-text-muted">
-                            Absolutely. People have used similar workflows for novels, YouTube essays, podcasts, D&amp;D campaigns, and whatever else needs beats and structure.
-                        </p>
-                    </div>
-                    <div class="faq-item">
-                        <h3 class="text-lg font-semibold text-white mb-1">How do I get updates?</h3>
-                        <p class="text-text-muted">
-                            New versions will be posted on GitHub and wherever you downloaded it from. The app will tell you what version you’re on; you can always grab the latest installer and overwrite the old one.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-zinc-950 border-t border-white/5 py-8">
-        <div class="max-w-7xl mx-auto px-6 lg:px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-muted">
-            <div>
-                &copy; <span id="year"></span> Scene Chunks. Built by a human, not a VC fund.
-            </div>
-            <div class="flex gap-4">
-                <a href="https://github.com/MrFizzywater/scene-chunks" target="_blank" rel="noreferrer" class="hover:text-white">GitHub</a>
-                <a href="mailto:youremail@example.com" class="hover:text-white">Contact</a>
+        <!-- Progress Indicator -->
+        <div class="mb-10">
+            <h2 class="text-lg font-semibold text-gray-400 mb-2 text-center uppercase tracking-wider">
+                System Status: Building the Portfolio
+            </h2>
+            <div class="bg-gray-700 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-yellow-500 h-2.5 rounded-full animate-pulse-bar"></div>
             </div>
         </div>
-    </footer>
 
-    <script>
-      // Automatically set current year in footer
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+        <!-- Details Card -->
+        <div class="bg-gray-700/50 p-6 rounded-xl border border-gray-600 mb-10">
+            <h3 class="text-2xl font-bold text-white mb-4 border-b border-gray-600 pb-2">
+                About the Creator
+            </h3>
+            <p class="text-gray-300 leading-relaxed">
+                Hello! I'm a Media Artist (Filmmaker, Editor, Photographer, and Designer) putting the final touches on a new digital home to showcase my work. I specialize in creative editing (After Effects is my jam) and 3D printing, and I'm a massive fan of absurdist comedy and the powerful sounds of Sleep Token.
+            </p>
+        </div>
+
+        <!-- Contact/Social Links -->
+        <footer class="text-center">
+            <p class="text-lg text-gray-400 mb-4">
+                Need to reach me in the meantime?
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <!-- Example Link 1: Email -->
+                <a href="mailto:your.email@example.com"
+                   class="inline-flex items-center px-6 py-3 border border-yellow-500 text-base font-medium rounded-full text-yellow-100 bg-gray-700 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 shadow-md hover:shadow-yellow-500/50">
+                    📧 Email Me
+                </a>
+                <!-- Example Link 2: Portfolio/LinkedIn/Social -->
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center px-6 py-3 border border-gray-400 text-base font-medium rounded-full text-gray-300 bg-gray-700 hover:bg-gray-600 transition duration-300 shadow-md">
+                    🔗 Connect on LinkedIn
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-gray-500">
+                (This placeholder will be replaced by a full site shortly.)
+            </p>
+        </footer>
+    </div>
+
 </body>
 </html>
